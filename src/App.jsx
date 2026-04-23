@@ -1,32 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 
-// Pages
-import HomePage from './pages/HomePage';
-import BabysittersPage from './pages/BabysittersPage';
-import BabysitterProfilePage from './pages/BabysitterProfilePage';
-import BookingPage from './pages/BookingPage';
-import PaymentSuccessPage from './pages/PaymentSuccessPage';
-import LoginPage from './pages/LoginPage';
+// Nouvelles Pages
+import WelcomePage from './pages/WelcomePage';
+import SearchFamilyPage from './pages/SearchFamilyPage';
+import SearchBabysitterPage from './pages/SearchBabysitterPage';
 import RegisterPage from './pages/RegisterPage';
-
-// Components
-import Navbar from './components/Navbar';
+import LoginPage from './pages-old/LoginPage';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <div className="min-h-screen bg-gray-50">
-          <Navbar />
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/babysitters" element={<BabysittersPage />} />
-            <Route path="/babysitters/:id" element={<BabysitterProfilePage />} />
-            <Route path="/booking/:id" element={<BookingPage />} />
-            <Route path="/payment-success" element={<PaymentSuccessPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            {/* Nouvelles Routes */}
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/search/family" element={<SearchFamilyPage />} />
+            <Route path="/search/babysitter" element={<SearchBabysitterPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </div>
       </Router>

@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { register as registerAPI } from '../services/api';
-import { UserPlus } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -12,16 +12,35 @@ const RegisterPage = () => {
     firstName: '',
     lastName: '',
     phone: '',
-    userType: 'family',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [searchInfo, setSearchInfo] = useState({});
+
+  useEffect(() => {
+    const userType = sessionStorage.getItem('userType');
+    const searchType = sessionStorage.getItem('searchType');
+    const flightNumber = sessionStorage.getItem('flightNumber');
+    const departureCity = sessionStorage.getItem('departureCity');
+    const arrivalCity = sessionStorage.getItem('arrivalCity');
+
+    setSearchInfo({
+      userType,
+      searchType,
+      flightNumber,
+      departureCity,
+      arrivalCity,
+    });
+
+    if (!userType) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    // Validation
     if (formData.password !== formData.confirmPassword) {
       setError('Les mots de passe ne correspondent pas');
       return;
@@ -34,187 +53,211 @@ const RegisterPage = () => {
 
     try {
       setLoading(true);
-      const userData = {
-        email: formData.email,
-        password: formData.password,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        phone: formData.phone,
-        user_type: formData.userType,
-      };
-
-      await registerAPI(userData);
       
-      // Rediriger vers la page de connexion
-      alert('Compte créé avec succès ! Vous pouvez maintenant vous connecter.');
+      const response = await fetch('https://api.sky-nanny.com/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          phone: formData.phone,
+          user_type: searchInfo.userType,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Erreur lors de la création du compte');
+      }
+
+      alert('Compte créé avec succès ! Connectez-vous maintenant.');
       navigate('/login');
     } catch (err) {
       console.error('Erreur inscription:', err);
-      setError(err.response?.data?.error || 'Erreur lors de la création du compte');
+      setError(err.message);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-            <UserPlus className="text-white" size={32} />
-          </div>
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Inscription</h1>
-          <p className="text-gray-600">Créez votre compte SkyNanny</p>
-        </div>
-
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Type d'utilisateur */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Je suis
-            </label>
-            <div className="grid grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => setFormData({ ...formData, userType: 'family' })}
-                className={`px-4 py-3 rounded-lg border-2 font-medium transition ${
-                  formData.userType === 'family'
-                    ? 'border-primary bg-primary/10 text-primary'
-                    : 'border-gray-300 text-gray-700 hover:border-gray-400'
-                }`}
-              >
-                Parent
-              </button>
-              <button
-                type="button"
-                onClick={() => setFormData({ ...formData, userType: 'babysitter' })}
-                className={`px-4 py-3 rounded-lg border-2 font-medium transition ${
-                  formData.userType === 'babysitter'
-                    ? 'border-primary bg-primary/10 text-primary'
-                    : 'border-gray-300 text-gray-700 hover:border-gray-400'
-                }`}
-              >
-                Babysitter
-              </button>
-            </div>
-          </div>
-
-          {/* Prénom & Nom */}
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Prénom
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="Marie"
-                value={formData.firstName}
-                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Nom
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="Dupont"
-                value={formData.lastName}
-                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-          </div>
-
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Adresse email
-            </label>
-            <input
-              type="email"
-              required
-              placeholder="vous@exemple.com"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-
-          {/* Téléphone */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Téléphone
-            </label>
-            <input
-              type="tel"
-              required
-              placeholder="06 12 34 56 78"
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-
-          {/* Mot de passe */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Mot de passe
-            </label>
-            <input
-              type="password"
-              required
-              placeholder="••••••••"
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-
-          {/* Confirmer mot de passe */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Confirmer le mot de passe
-            </label>
-            <input
-              type="password"
-              required
-              placeholder="••••••••"
-              value={formData.confirmPassword}
-              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-
-          {/* Bouton */}
+    <div className="min-h-screen flex flex-col">
+      {/* Header */}
+      <div className="border-b border-gray-200">
+        <div className="container mx-auto px-4 py-4">
           <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition disabled:opacity-50"
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition"
           >
-            {loading ? 'Création du compte...' : 'Créer mon compte'}
+            <ArrowLeft size={20} />
+            <span className="text-sm">Retour</span>
           </button>
-        </form>
-
-        {/* Lien connexion */}
-        <div className="mt-6 text-center">
-          <p className="text-gray-600">
-            Déjà un compte ?{' '}
-            <Link to="/login" className="text-primary font-semibold hover:underline">
-              Se connecter
-            </Link>
-          </p>
         </div>
       </div>
+
+      <div className="flex-1 container mx-auto px-4 py-12">
+        <div className="max-w-md mx-auto">
+          {/* Logo */}
+          <div className="text-center mb-8">
+          <img 
+            src="/images/skynanny-logo.png" 
+            alt="SkyNanny" 
+            className="w-20 h-20 mx-auto object-contain mb-4"
+          />
+            <h1 className="text-2xl text-gray-900 mb-2 font-normal">
+              Créer un compte
+            </h1>
+            <p className="text-sm text-gray-600">
+              Étape 1 sur 4
+            </p>
+          </div>
+
+          {/* Info Recherche */}
+          <div className="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
+            <p className="text-xs text-gray-500 mb-1">Votre recherche :</p>
+            {searchInfo.searchType === 'flight' ? (
+              <p className="text-sm font-normal text-gray-900">
+                Vol {searchInfo.flightNumber}
+              </p>
+            ) : (
+              <p className="text-sm font-normal text-gray-900">
+                Depuis {searchInfo.departureCity}
+                {searchInfo.arrivalCity && ` → ${searchInfo.arrivalCity}`}
+              </p>
+            )}
+            <p className="text-xs text-gray-500 mt-1">
+              Type : {searchInfo.userType === 'family' ? 'Famille' : 'Babysitter'}
+            </p>
+          </div>
+
+          {/* Formulaire */}
+          <div className="bg-white">
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-6 text-sm">
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Prénom & Nom */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs text-gray-700 mb-1.5">
+                    Prénom
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Marie"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-700 mb-1.5">
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Dupont"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block text-xs text-gray-700 mb-1.5">
+                  Adresse e-mail
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="vous@exemple.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                />
+              </div>
+
+              {/* Téléphone */}
+              <div>
+                <label className="block text-xs text-gray-700 mb-1.5">
+                  Numéro de téléphone
+                </label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="06 12 34 56 78"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                />
+              </div>
+
+              {/* Mot de passe */}
+              <div>
+                <label className="block text-xs text-gray-700 mb-1.5">
+                  Mot de passe
+                </label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Minimum 6 caractères"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                />
+              </div>
+
+              {/* Confirmer mot de passe */}
+              <div>
+                <label className="block text-xs text-gray-700 mb-1.5">
+                  Confirmer le mot de passe
+                </label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Retapez votre mot de passe"
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                />
+              </div>
+
+              {/* Bouton */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-primary text-white py-3 rounded-md font-normal hover:bg-primary/90 transition disabled:opacity-50 mt-6 text-sm"
+              >
+                {loading ? 'Création en cours...' : 'Continuer'}
+              </button>
+            </form>
+
+            {/* Lien connexion */}
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-600">
+                Vous avez déjà un compte ?{' '}
+                <button
+                  onClick={() => navigate('/login')}
+                  className="text-gray-900 underline hover:text-primary transition"
+                >
+                  Connectez-vous
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };
