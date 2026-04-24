@@ -15,10 +15,11 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500 mb-6">
           <a href="/legal/cgv-fr.html" className="hover:text-gray-700 transition">Conditions de vente</a>
           <a href="/legal/cgv-fr.html" className="hover:text-gray-700 transition">Conditions d'utilisation</a>
-          <a href="/mentions-legales" className="hover:text-gray-700 transition">Mentions légales</a>
+          <a href="/legal/mentions-legales.html" className="hover:text-gray-700 transition">Mentions légales</a>
           <a href="/legal/confidentialite.html" className="hover:text-gray-700 transition">Protection des données</a>
+          <a href="/legal/cookies.html" className="hover:text-gray-700 transition">Politique de cookies</a>
+          <a href="/legal/disclaimer.html" className="hover:text-gray-700 transition">Disclaimer</a>
           <a href="/plan-du-site" className="hover:text-gray-700 transition">Plan du site</a>
-          <a href="/cookies" className="hover:text-gray-700 transition">Modifier les paramètres des cookies</a>
         </div>
 
         {/* Sélecteur de pays */}

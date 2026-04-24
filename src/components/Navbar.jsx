@@ -1,70 +1,117 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { User, LogOut } from 'lucide-react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
-  const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
+  const navigation = [
+    { name: 'Accueil', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'Comment ça marche', href: '/how-it-works' },
+    { name: 'À propos', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ];
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              SkyNanny
-            </div>
-          </Link>
-
-          {/* Menu */}
-          <div className="flex items-center gap-6">
-            <Link
-              to="/babysitters"
-              className="text-gray-700 hover:text-primary transition font-medium"
+          <div className="flex-shrink-0">
+            <button 
+              onClick={() => navigate('/')}
+              className="flex items-center gap-2 hover:opacity-80 transition"
             >
-              Trouver une babysitter
-            </Link>
+              <img 
+                src="/images/skynanny-logo.png" 
+                alt="SkyNanny" 
+                className="h-10 w-10 object-contain"
+              />
+              <span className="text-xl font-semibold text-gray-900">SkyNanny</span>
+            </button>
+          </div>
 
-            {isAuthenticated ? (
-              <>
-                <div className="flex items-center gap-2 text-gray-700">
-                  <User size={20} />
-                  <span className="font-medium">
-                    {user?.first_name} {user?.last_name}
-                  </span>
-                </div>
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center gap-2 text-gray-700 hover:text-primary transition"
-                >
-                  <LogOut size={20} />
-                  Déconnexion
-                </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="text-gray-700 hover:text-primary transition font-medium"
-                >
-                  Connexion
-                </Link>
-                <Link
-                  to="/register"
-                  className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition font-medium"
-                >
-                  Inscription
-                </Link>
-              </>
-            )}
+          {/* Navigation Desktop */}
+          <div className="hidden md:flex items-center gap-8">
+            {navigation.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => navigate(item.href)}
+                className="text-gray-600 hover:text-primary transition text-sm font-normal"
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+
+          {/* CTA Buttons Desktop */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={() => navigate('/login')}
+              className="px-4 py-2 text-sm font-normal text-gray-700 hover:text-primary transition"
+            >
+              Se connecter
+            </button>
+            <button
+              onClick={() => navigate('/')}
+              className="px-5 py-2 bg-primary text-white rounded-lg text-sm font-normal hover:bg-primary/90 transition shadow-sm"
+            >
+              S'inscrire
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-gray-600 hover:text-gray-900"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-100">
+            <div className="flex flex-col space-y-3">
+              {navigation.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => {
+                    navigate(item.href);
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-gray-600 hover:text-primary transition text-sm font-normal text-left px-2 py-2"
+                >
+                  {item.name}
+                </button>
+              ))}
+              <div className="pt-3 border-t border-gray-100 space-y-2">
+                <button
+                  onClick={() => {
+                    navigate('/login');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-2 text-sm font-normal text-gray-700"
+                >
+                  Se connecter
+                </button>
+                <button
+                  onClick={() => {
+                    navigate('/');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full px-4 py-2 bg-primary text-white rounded-lg text-sm font-normal hover:bg-primary/90 transition"
+                >
+                  S'inscrire
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

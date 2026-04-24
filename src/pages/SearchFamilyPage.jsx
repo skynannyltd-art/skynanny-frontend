@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plane, MapPin, ArrowLeft } from 'lucide-react';
+import { Plane, MapPin } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const SearchFamilyPage = () => {
@@ -32,18 +33,7 @@ const SearchFamilyPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <div className="border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition"
-          >
-            <ArrowLeft size={20} />
-            <span className="text-sm">Retour</span>
-          </button>
-        </div>
-      </div>
+      <Navbar />
 
       {/* Contenu */}
       <div className="flex-1 container mx-auto px-4 py-12">

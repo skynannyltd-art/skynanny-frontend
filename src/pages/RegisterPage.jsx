@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const RegisterPage = () => {
@@ -84,28 +84,17 @@ const RegisterPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <div className="border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition"
-          >
-            <ArrowLeft size={20} />
-            <span className="text-sm">Retour</span>
-          </button>
-        </div>
-      </div>
+      <Navbar />
 
       <div className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto">
           {/* Logo */}
           <div className="text-center mb-8">
-          <img 
-            src="/images/skynanny-logo.png" 
-            alt="SkyNanny" 
-            className="w-20 h-20 mx-auto object-contain mb-4"
-          />
+            <img 
+              src="/images/skynanny-logo.png" 
+              alt="SkyNanny" 
+              className="w-20 h-20 mx-auto object-contain mb-4"
+            />
             <h1 className="text-2xl text-gray-900 mb-2 font-normal">
               Créer un compte
             </h1>

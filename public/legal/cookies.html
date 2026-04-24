@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Cookies - SkyNanny</title>
+    <style>
+        :root{--ink:#0D0F1A;--sky:#4A90B8;--gold:#C9A84C}*{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:system-ui,-apple-system,sans-serif;background:#fff;color:#333;padding:40px 20px;line-height:1.7}
+        .c{max-width:900px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:60px 50px}
+        h1{font-size:2.5rem;color:#111;margin-bottom:10px;font-weight:600}
+        .sub{color:#6b7280;margin-bottom:40px}
+        h2{font-size:1.5rem;color:var(--sky);margin:30px 0 15px;font-weight:600}
+        h3{font-size:1.2rem;color:#111;margin:20px 0 10px;font-weight:600}
+        p{margin-bottom:15px;color:#4b5563}
+        ul{margin:15px 0 15px 25px;color:#4b5563}
+        li{margin-bottom:8px}
+        strong{color:#111}
+        .back{display:inline-block;margin-top:40px;padding:12px 24px;background:var(--sky);border-radius:8px;color:#fff;font-weight:600;text-decoration:none}
+        .back:hover{opacity:0.9}
+        a{color:var(--sky);text-decoration:underline}
+        table{width:100%;border-collapse:collapse;margin:20px 0}
+        th,td{border:1px solid #e5e7eb;padding:12px;text-align:left}
+        th{background:#f9fafb;font-weight:600}
+        .cookie-type{display:inline-block;padding:4px 12px;border-radius:6px;font-size:0.85rem;font-weight:600}
+        .essential{background:#dcfce7;color:#166534}
+        .analytics{background:#dbeafe;color:#1e40af}
+        .marketing{background:#fef3c7;color:#92400e}
+    </style>
+</head>
+<body>
+<div class="c">
+    <h1>Politique de Cookies</h1>
+    <p class="sub">En vigueur au 1er mars 2026</p>
+    
+    <h2>1. Qu'est-ce qu'un cookie ?</h2>
+    <p>Un cookie est un petit fichier texte stocké sur votre appareil (ordinateur, smartphone, tablette) lorsque vous visitez un site web. Les cookies permettent au site de mémoriser vos préférences et d'améliorer votre expérience de navigation.</p>
+    
+    <h2>2. Types de cookies utilisés</h2>
+    
+    <h3>Cookies Essentiels (Obligatoires)</h3>
+    <p>Ces cookies sont nécessaires au fonctionnement du site. Ils ne peuvent pas être désactivés.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Cookie</th>
+                <th>Type</th>
+                <th>Durée</th>
+                <th>Finalité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>auth_token</code></td>
+                <td><span class="cookie-type essential">Essentiel</span></td>
+                <td>24 heures</td>
+                <td>Authentification utilisateur (JWT)</td>
+            </tr>
+            <tr>
+                <td><code>session_id</code></td>
+                <td><span class="cookie-type essential">Essentiel</span></td>
+                <td>Session</td>
+                <td>Maintien de la session utilisateur</td>
+            </tr>
+            <tr>
+                <td><code>csrf_token</code></td>
+                <td><span class="cookie-type essential">Essentiel</span></td>
+                <td>Session</td>
+                <td>Protection contre les attaques CSRF</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Cookies de Performance (Optionnels)</h3>
+    <p>Ces cookies nous aident à comprendre comment vous utilisez le site afin de l'améliorer. Ils ne collectent que des données anonymisées.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Cookie</th>
+                <th>Type</th>
+                <th>Durée</th>
+                <th>Finalité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>_ga</code></td>
+                <td><span class="cookie-type analytics">Analytique</span></td>
+                <td>2 ans</td>
+                <td>Google Analytics - Statistiques de visite</td>
+            </tr>
+            <tr>
+                <td><code>_gid</code></td>
+                <td><span class="cookie-type analytics">Analytique</span></td>
+                <td>24 heures</td>
+                <td>Google Analytics - Identification utilisateur</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Cookies Marketing (Optionnels)</h3>
+    <p>Ces cookies sont utilisés pour afficher des publicités pertinentes. Vous pouvez les refuser.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Cookie</th>
+                <th>Type</th>
+                <th>Durée</th>
+                <th>Finalité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>_fbp</code></td>
+                <td><span class="cookie-type marketing">Marketing</span></td>
+                <td>3 mois</td>
+                <td>Facebook Pixel - Publicités ciblées</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>3. Cookies tiers</h2>
+    
+    <h3>Stripe (Paiements)</h3>
+    <p>Nous utilisons Stripe pour traiter les paiements. Stripe peut déposer des cookies pour sécuriser les transactions. Ces cookies sont essentiels au fonctionnement du paiement.</p>
+    <p><strong>Durée :</strong> Variable selon le cookie<br>
+    <strong>Finalité :</strong> Sécurisation des paiements, prévention de la fraude</p>
+    
+    <h3>Google Analytics (Statistiques)</h3>
+    <p>Nous utilisons Google Analytics pour comprendre comment les visiteurs utilisent notre site.</p>
+    <p><strong>Données collectées :</strong> Pages visitées, durée de visite, localisation approximative, appareil utilisé<br>
+    <strong>Données anonymisées :</strong> Oui (adresses IP tronquées)</p>
+    
+    <h2>4. Gérer vos préférences</h2>
+    
+    <h3>Désactiver les cookies via votre navigateur</h3>
+    <p>Vous pouvez configurer votre navigateur pour refuser tous les cookies ou vous alerter lorsqu'un cookie est déposé :</p>
+    
+    <ul>
+        <li><strong>Google Chrome :</strong> Paramètres → Confidentialité et sécurité → Cookies</li>
+        <li><strong>Firefox :</strong> Préférences → Vie privée et sécurité → Cookies</li>
+        <li><strong>Safari :</strong> Préférences → Confidentialité → Cookies</li>
+        <li><strong>Edge :</strong> Paramètres → Confidentialité → Cookies</li>
+    </ul>
+    
+    <p><strong>⚠️ Attention :</strong> Désactiver les cookies essentiels empêchera le bon fonctionnement du site (connexion impossible, panier non sauvegardé, etc.).</p>
+    
+    <h3>Modifier vos préférences sur SkyNanny</h3>
+    <p>Vous pouvez modifier vos préférences de cookies à tout moment en cliquant sur le lien "Modifier les paramètres des cookies" dans le footer du site.</p>
+    
+    <h2>5. Durée de conservation</h2>
+    <ul>
+        <li><strong>Cookies de session :</strong> Supprimés à la fermeture du navigateur</li>
+        <li><strong>Cookies persistants :</strong> Durée variable (voir tableau ci-dessus)</li>
+        <li><strong>Maximum :</strong> 2 ans (sauf obligation légale)</li>
+    </ul>
+    
+    <h2>6. Cookies et données personnelles</h2>
+    <p>Certains cookies peuvent contenir des données personnelles (notamment ceux d'authentification). Ces données sont traitées conformément à notre <a href="/legal/confidentialite.html">Politique de Confidentialité</a> et au RGPD.</p>
+    
+    <h2>7. Cookies et mineurs</h2>
+    <p>SkyNanny est un service destiné aux adultes. Nous ne collectons pas sciemment de données via cookies auprès de mineurs de moins de 18 ans.</p>
+    
+    <h2>8. Modifications</h2>
+    <p>Nous pouvons modifier cette politique de cookies à tout moment. La date de dernière mise à jour figure en haut de cette page. Les modifications substantielles vous seront notifiées par email.</p>
+    
+    <h2>9. Contact</h2>
+    <p>Pour toute question concernant les cookies :<br>
+    <strong>Email :</strong> contact@sky-nanny.com<br>
+    <strong>Objet :</strong> "Question Cookies"</p>
+    
+    <h2>10. Liens utiles</h2>
+    <ul>
+        <li><a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs" target="_blank">CNIL - Cookies et traceurs</a></li>
+        <li><a href="https://www.youronlinechoices.eu/" target="_blank">Your Online Choices - Gérer les cookies publicitaires</a></li>
+    </ul>
+    
+    <p style="margin-top:60px;color:#9ca3af;text-align:center">Version 1.0 • Mars 2026 • SkyNanny</p>
+    <a href="/" class="back">← Retour à l'accueil</a>
+</div>
+</body>
+</html>

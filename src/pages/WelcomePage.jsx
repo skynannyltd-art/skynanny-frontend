@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Users, Baby } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const WelcomePage = () => {
@@ -7,17 +8,18 @@ const WelcomePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Navbar />
+      
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="max-w-2xl w-full text-center">
-          {/* Logo sans fond */}
-         {/* Logo SVG */}
-     <div className="mb-6">
-       <img 
-         src="/images/skynanny-logo.png" 
-         alt="SkyNanny" 
-         className="w-32 h-32 mx-auto object-contain"
-       />
-     </div>
+          {/* Logo */}
+          <div className="mb-6">
+            <img 
+              src="/images/skynanny-logo.png" 
+              alt="SkyNanny" 
+              className="w-32 h-32 mx-auto object-contain"
+            />
+          </div>
 
           {/* Titre Question */}
           <h1 className="text-3xl text-gray-900 mb-8 font-normal">
