@@ -9,9 +9,29 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Titres en gras */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* Paragraphes en poids normal */
+p {
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+/* Texte en gras quand spécifié */
+strong, b {
+  font-weight: 900;
+}
+
+/* Buttons avec font-weight medium */
+button {
+  font-weight: 700;
 }

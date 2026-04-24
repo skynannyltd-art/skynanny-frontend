@@ -7,6 +7,7 @@ import WelcomePage from './pages/WelcomePage';
 import SearchFamilyPage from './pages/SearchFamilyPage';
 import SearchBabysitterPage from './pages/SearchBabysitterPage';
 import RegisterPage from './pages/RegisterPage';
+import AboutPage from './pages/AboutPage';
 import LoginPage from './pages-old/LoginPage';
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
             {/* Auth */}
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
+            
+            {/* Pages institutionnelles */}
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
         </div>
       </Router>
