@@ -8,6 +8,8 @@ import SearchFamilyPage from './pages/SearchFamilyPage';
 import SearchBabysitterPage from './pages/SearchBabysitterPage';
 import RegisterPage from './pages/RegisterPage';
 import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import FAQPage from './pages/FAQPage';
 import LoginPage from './pages-old/LoginPage';
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
       <Router>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            {/* HomePage nouvelle */}
+            {/* HomePage */}
             <Route path="/" element={<HomePage />} />
             
             {/* Welcome page (choix type utilisateur) */}
@@ -32,6 +34,8 @@ function App() {
             
             {/* Pages institutionnelles */}
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/faq" element={<FAQPage />} />
           </Routes>
         </div>
       </Router>
