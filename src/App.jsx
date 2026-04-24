@@ -10,7 +10,10 @@ import RegisterPage from './pages/RegisterPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import FAQPage from './pages/FAQPage';
-import LoginPage from './pages-old/LoginPage';
+import LoginPage from './pages/LoginPage';
+import ServicesPage from './pages/ServicesPage';
+import HowItWorksPage from './pages/HowItWorksPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -36,6 +39,11 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+           
+            {/* Route 404 - Doit etre en dernier */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </Router>

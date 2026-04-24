@@ -700,4 +700,337 @@ git push origin main
 
 ---
 
-**Dernière mise à jour :** 11 Avril 2026, 14h30
+## 🆕 Session 4 - 11 Avril 2026 (Après-midi suite)
+
+**Durée :** +3 heures  
+**Progression :** 60% → 70%
+
+### Typographie Finalisée ✅
+
+**Police Outfit appliquée à tout le site**
+
+**Tests effectués :**
+- ❌ Poppins (lettres trop hautes)
+- ❌ Inter (lettres trop hautes)
+- ❌ Manrope (bien mais pas parfait)
+- ❌ Jost (géométrique mais trop froid)
+- ❌ Sora (arrondis tech)
+- ✅ **Outfit** (CHOIX FINAL - équilibre parfait)
+
+**Caractéristiques Outfit :**
+- Lettres courtes (comme demandé)
+- Arrondis parfaits (ni trop, ni trop peu)
+- Look élégant et moderne
+- Professionnel mais chaleureux
+- Parfait pour service famille
+
+**Configuration :**
+- index.html : Google Fonts import
+- tailwind.config.js : fontFamily Outfit
+- src/index.css : Poids configurés (H1-6: 600, Body: 400, Strong: 700, Buttons: 500)
+
+---
+
+### Pages Institutionnelles Créées ✅
+
+#### 1. AboutPage.jsx ✅
+
+**Fichier :** `src/pages/AboutPage.jsx`  
+**Route :** `/about`
+
+**Sections :**
+
+**Notre Histoire (Personnalisée)**
+- Histoire personnelle fondatrice
+- Expatriée maman de 2 enfants
+- Vols seule avec enfants (mari indisponible)
+- Recherche solution inexistante
+- Création SkyNanny
+- Aide familles ET jeunes babysitters
+- Ton chaleureux et proche
+- Emoji cœur final
+
+**Mission & Vision**
+- Mission : Transformer vols famille en expérience agréable
+- Vision : Référence mondiale vols famille 2028
+
+**Nos Valeurs (3)**
+1. Sécurité Avant Tout (vérifications système)
+2. Confiance Mutuelle (profils, avis, messagerie)
+3. Esprit Communautaire (entraide voyageurs)
+
+**Notre Équipe (3 membres)**
+- Jean Dupont (Fondateur & CEO)
+- Sophie Martin (Head of Safety)
+- Alexandre Leroy (CTO)
+
+**Chiffres Clés**
+- 2,500+ Familles
+- 1,200+ Babysitters
+- 5,000+ Vols
+- 4.8/5 Satisfaction
+
+**CTA Final**
+- Boutons Famille / Babysitter
+
+---
+
+#### 2. ContactPage.jsx ✅
+
+**Fichier :** `src/pages/ContactPage.jsx`  
+**Route :** `/contact`
+
+**Formulaire Contact**
+- Nom complet (requis)
+- Email (requis, validation regex)
+- Téléphone (optionnel)
+- Sujet (dropdown 8 options)
+- Message (requis, textarea)
+- Validation côté client
+- Messages succès/erreur
+- Simulation envoi (1.5s)
+- TODO: Connecter vraie API plus tard
+
+**Informations Contact**
+- Email uniquement : contact@sky-nanny.com
+- Réponse sous 24h
+- Supprimé : Téléphone, Adresse, Horaires, Support urgent
+
+**FAQ Rapide (3 questions)**
+1. Comment devenir babysitter
+2. Délai réponse support
+3. Modifier réservation
+
+**Lien vers page FAQ complète**
+
+---
+
+#### 3. FAQPage.jsx ✅
+
+**Fichier :** `src/pages/FAQPage.jsx`  
+**Route :** `/faq`
+
+**Fonctionnalités**
+- Accordéon interactif (useState)
+- 5 catégories
+- 28 questions totales
+- Clic pour ouvrir/fermer
+- Une seule question ouverte à la fois
+- Transitions smooth
+
+**5 Catégories**
+
+**1. Pour les Familles (7 questions)**
+- Comment fonctionne SkyNanny
+- Coût service (30% billet babysitter + 5% commission)
+- Vérification babysitters
+- Annulation réservation (72h/24h)
+- Si babysitter annule
+- Plusieurs enfants
+- Rencontrer avant vol
+
+**2. Pour les Babysitters (7 questions)**
+- Devenir babysitter
+- Combien gagner (30% billet - 5%)
+- Payer billet avion
+- Documents obligatoires
+- Refuser demande
+- Assurance
+- Limite propositions
+
+**3. Réservation et Paiement (5 questions)**
+- Effectuer réservation
+- Moyens paiement (Stripe)
+- Quand babysitter payé (7j après)
+- Paiement espèces (non)
+- Frais cachés (non)
+
+**4. Sécurité et Confiance (4 questions)**
+- Babysitter fiable
+- Problème pendant vol
+- Conversations privées
+- Babysitter absent
+
+**5. Technique et Compte (5 questions)**
+- Créer compte
+- Mot passe oublié
+- Modifier profil
+- Supprimer compte
+- App mobile (2026)
+
+**CTA Final**
+- Lien vers page Contact
+
+**Problèmes Résolus**
+- Erreur guillemets/apostrophes
+- Encodage Notepad
+- Suppression apostrophes françaises
+- Création via PowerShell
+
+---
+
+### Structure Routes Finale
+/ → HomePage
+/welcome → WelcomePage
+/search/family → SearchFamilyPage
+/search/babysitter → SearchBabysitterPage
+/register → RegisterPage
+/login → LoginPage
+/about → AboutPage ⭐
+/contact → ContactPage ⭐
+/faq → FAQPage ⭐
+
+---
+
+### Fichiers Créés Session 4
+
+**Pages (3) :**
+- src/pages/AboutPage.jsx
+- src/pages/ContactPage.jsx
+- src/pages/FAQPage.jsx
+
+**Config (3) :**
+- index.html (Outfit font)
+- tailwind.config.js (Outfit config)
+- src/index.css (poids police)
+
+---
+
+### Progression Totale
+
+**Frontend : 70%**
+
+✅ **Terminé (70%) :**
+- Design system ✅
+- Navbar sticky ✅
+- HomePage complète ✅
+- Pages recherche ✅
+- Page inscription ✅
+- Footer complet ✅
+- Pages légales (5/5) ✅
+- **Typographie Outfit** ✅
+- **Page À propos** ✅
+- **Page Contact** ✅
+- **Page FAQ** ✅
+
+❌ **À Faire (30%) :**
+- Page Login adaptée (5%)
+- Pages fonctionnelles :
+  - Upload billet babysitter (5%)
+  - Liste résultats (babysitters/familles) (10%)
+  - Profils détaillés (5%)
+  - Messagerie (5%)
+
+---
+
+### Prochaines Étapes
+
+**Priorité HAUTE :**
+1. Adapter LoginPage au style Outfit
+2. Pages résultats recherche
+
+**Priorité MOYENNE :**
+1. Upload billet babysitter
+2. Profils détaillés
+3. Messagerie
+
+**Priorité BASSE :**
+1. Dashboard utilisateur
+2. Notifications
+3. Système avis/notes
+
+---
+
+**Date mise à jour :** 11 Avril 2026, 16h00  
+**Total durée :** 12 heures  
+**Progression :** 70% ✅
+💾 Sauvegardez
+
+📂 PARTIE 3 : Push Notes
+powershellgit add SESSION-NOTES-FRONTEND.md
+git commit -m "Update session notes - Institutional pages complete (About, Contact, FAQ)"
+git push origin main
+
+📂 PARTIE 4 : Créer INSTITUTIONAL-PAGES-SUMMARY.md
+powershellnotepad INSTITUTIONAL-PAGES-SUMMARY.md
+Collez :
+markdown# 📋 Pages Institutionnelles - Résumé
+
+**Date :** 11 Avril 2026  
+**Status :** ✅ 3/3 Pages Complètes  
+**Font :** Outfit (finalisée)
+
+---
+
+## 📄 Pages Créées
+
+| Page | Route | Sections | Status |
+|------|-------|----------|--------|
+| À Propos | /about | 6 sections | ✅ |
+| Contact | /contact | Formulaire + FAQ | ✅ |
+| FAQ | /faq | 28 questions | ✅ |
+
+---
+
+## 🎨 Typographie : Outfit
+
+**Choix Final après tests :**
+- Poppins ❌
+- Inter ❌
+- Manrope ❌
+- Jost ❌
+- Sora ❌
+- **Outfit ✅** (SÉLECTIONNÉ)
+
+**Pourquoi Outfit :**
+- Lettres courtes (demande client)
+- Arrondis parfaits
+- Élégant + Chaleureux
+- Parfait pour familles
+
+---
+
+## 📊 Contenu Détaillé
+
+### AboutPage
+
+**Histoire Personnelle :**
+- Fondatrice expatriée
+- Maman 2 enfants
+- Vols seule (mari indisponible)
+- Création service manquant
+- Aide familles + jeunes
+
+**Autres Sections :**
+- Mission & Vision
+- 3 Valeurs
+- 3 Membres équipe
+- 4 Stats clés
+- CTA
+
+### ContactPage
+
+**Formulaire :**
+- 5 champs
+- Validation complète
+- Messages succès/erreur
+
+**Contact :**
+- Email uniquement
+- 3 FAQ rapides
+
+### FAQPage
+
+**28 Questions :**
+- 7 Familles
+- 7 Babysitters
+- 5 Paiement
+- 4 Sécurité
+- 5 Technique
+
+**Accordéon interactif**
+
+---
+
+**Version :** 1.0  
+**Dernière MàJ :** 11 Avril 2026

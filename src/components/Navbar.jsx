@@ -1,118 +1,204 @@
 import { useState } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
-  const navigation = [
-    { name: 'Accueil', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Comment ça marche', href: '/how-it-works' },
-    { name: 'À propos', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-  ];
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <button 
-              onClick={() => navigate('/')}
-              className="flex items-center gap-2 hover:opacity-80 transition"
+          <div 
+            className="flex items-center cursor-pointer"
+            onClick={() => navigate('/')}
+          >
+            <img 
+              src="/images/skynanny-logo.png" 
+              alt="SkyNanny" 
+              className="h-10 w-10 object-contain"
+            />
+            <span className="ml-2 text-xl font-semibold text-gray-900">
+              SkyNanny
+            </span>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => navigate('/services')}
+              className="text-gray-700 hover:text-primary transition font-medium"
             >
-              <img 
-                src="/images/skynanny-logo.png" 
-                alt="SkyNanny" 
-                className="h-10 w-10 object-contain"
-              />
-              <span className="text-xl font-semibold text-gray-900">SkyNanny</span>
+              Services
             </button>
-          </div>
 
-          {/* Navigation Desktop */}
-          <div className="hidden md:flex items-center gap-8">
-            {navigation.map((item) => (
+            <button
+              onClick={() => navigate('/how-it-works')}
+              className="text-gray-700 hover:text-primary transition font-medium"
+            >
+              Comment ca marche
+            </button>
+
+            {/* Dropdown Ressources */}
+            <div className="relative">
               <button
-                key={item.name}
-                onClick={() => navigate(item.href)}
-                className="text-gray-600 hover:text-primary transition text-sm font-normal"
+                onMouseEnter={() => setResourcesOpen(true)}
+                onMouseLeave={() => setResourcesOpen(false)}
+                className="flex items-center gap-1 text-gray-700 hover:text-primary transition font-medium"
               >
-                {item.name}
+                Ressources
+                <ChevronDown size={16} className={`transition-transform ${resourcesOpen ? 'rotate-180' : ''}`} />
               </button>
-            ))}
-          </div>
 
-          {/* CTA Buttons Desktop */}
-          <div className="hidden md:flex items-center gap-3">
+              {resourcesOpen && (
+                <div
+                  onMouseEnter={() => setResourcesOpen(true)}
+                  onMouseLeave={() => setResourcesOpen(false)}
+                  className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2"
+                >
+                  <button
+                    onClick={() => {
+                      navigate('/about');
+                      setResourcesOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 transition"
+                  >
+                    A propos
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate('/faq');
+                      setResourcesOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 transition"
+                  >
+                    FAQ
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate('/contact');
+                      setResourcesOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 transition"
+                  >
+                    Contact
+                  </button>
+                </div>
+              )}
+            </div>
+
             <button
               onClick={() => navigate('/login')}
-              className="px-4 py-2 text-sm font-normal text-gray-700 hover:text-primary transition"
+              className="text-gray-700 hover:text-primary transition font-medium"
             >
-              Se connecter
+              Connexion
             </button>
+
             <button
-              onClick={() => navigate('/')}
-              className="px-5 py-2 bg-primary text-white rounded-lg text-sm font-normal hover:bg-primary/90 transition shadow-sm"
+              onClick={() => navigate('/welcome')}
+              className="px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition font-medium"
             >
-              S'inscrire
+              Inscrire
             </button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-gray-600 hover:text-gray-900"
+              onClick={toggleMobileMenu}
+              className="text-gray-700 hover:text-primary transition"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
-            <div className="flex flex-col space-y-3">
-              {navigation.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => {
-                    navigate(item.href);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-gray-600 hover:text-primary transition text-sm font-normal text-left px-2 py-2"
-                >
-                  {item.name}
-                </button>
-              ))}
-              <div className="pt-3 border-t border-gray-100 space-y-2">
-                <button
-                  onClick={() => {
-                    navigate('/login');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full text-left px-2 py-2 text-sm font-normal text-gray-700"
-                >
-                  Se connecter
-                </button>
-                <button
-                  onClick={() => {
-                    navigate('/');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full px-4 py-2 bg-primary text-white rounded-lg text-sm font-normal hover:bg-primary/90 transition"
-                >
-                  S'inscrire
-                </button>
-              </div>
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="px-4 py-3 space-y-3">
+            <button
+              onClick={() => {
+                navigate('/services');
+                setMobileMenuOpen(false);
+              }}
+              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+            >
+              Services
+            </button>
+
+            <button
+              onClick={() => {
+                navigate('/how-it-works');
+                setMobileMenuOpen(false);
+              }}
+              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+            >
+              Comment ca marche
+            </button>
+
+            <button
+              onClick={() => {
+                navigate('/about');
+                setMobileMenuOpen(false);
+              }}
+              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+            >
+              A propos
+            </button>
+
+            <button
+              onClick={() => {
+                navigate('/faq');
+                setMobileMenuOpen(false);
+              }}
+              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+            >
+              FAQ
+            </button>
+
+            <button
+              onClick={() => {
+                navigate('/contact');
+                setMobileMenuOpen(false);
+              }}
+              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+            >
+              Contact
+            </button>
+
+            <div className="border-t border-gray-200 pt-3 space-y-3">
+              <button
+                onClick={() => {
+                  navigate('/login');
+                  setMobileMenuOpen(false);
+                }}
+                className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+              >
+                Connexion
+              </button>
+
+              <button
+                onClick={() => {
+                  navigate('/welcome');
+                  setMobileMenuOpen(false);
+                }}
+                className="block w-full px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition font-medium text-center"
+              >
+                Inscrire
+              </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 };

@@ -1,56 +1,251 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Mail, Send } from 'lucide-react';
+
 const Footer = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      console.log('Newsletter subscription:', email);
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 3000);
+    }
+  };
+
   return (
-    <footer className="bg-white border-t border-gray-200 mt-auto">
-      {/* Navigation Footer */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 mb-6">
-          <a href="/about" className="hover:text-gray-900 transition">À propos</a>
-          <a href="/contact" className="hover:text-gray-900 transition">Contact</a>
-          <a href="/security" className="hover:text-gray-900 transition">Centre de Sécurité</a>
-          <a href="/magazine" className="hover:text-gray-900 transition">Magazine</a>
-          <a href="/faqs" className="hover:text-gray-900 transition">FAQs</a>
-        </div>
+    <footer className="bg-gray-900 text-white">
+      {/* Newsletter Section */}
+      <div className="border-b border-gray-800">
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-2xl mx-auto text-center">
+            <h3 className="text-2xl font-semibold mb-3">
+              Restez informe
+            </h3>
+            <p className="text-gray-400 mb-6">
+              Recevez nos conseils voyage et offres exclusives
+            </p>
 
-        {/* Liens légaux */}
-        <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500 mb-6">
-          <a href="/legal/cgv-fr.html" className="hover:text-gray-700 transition">Conditions de vente</a>
-          <a href="/legal/cgv-fr.html" className="hover:text-gray-700 transition">Conditions d'utilisation</a>
-          <a href="/legal/mentions-legales.html" className="hover:text-gray-700 transition">Mentions légales</a>
-          <a href="/legal/confidentialite.html" className="hover:text-gray-700 transition">Protection des données</a>
-          <a href="/legal/cookies.html" className="hover:text-gray-700 transition">Politique de cookies</a>
-          <a href="/legal/disclaimer.html" className="hover:text-gray-700 transition">Disclaimer</a>
-          <a href="/plan-du-site" className="hover:text-gray-700 transition">Plan du site</a>
+            {subscribed ? (
+              <div className="bg-green-500/20 border border-green-500 text-green-400 px-6 py-3 rounded-lg inline-block">
+                Merci pour votre inscription !
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Votre adresse email"
+                  required
+                  className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition font-medium flex items-center justify-center gap-2"
+                >
+                  <Send size={18} />
+                  Abonner
+                </button>
+              </form>
+            )}
+          </div>
         </div>
+      </div>
 
-        {/* Sélecteur de pays */}
-        <div className="flex justify-center mb-6">
-          <select className="px-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:border-primary">
-            <option value="fr">France</option>
-            <option value="be">Belgique</option>
-            <option value="ch">Suisse</option>
-            <option value="ca">Canada</option>
-          </select>
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          
+          {/* Colonne 1 - A propos */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center mb-4">
+              <img 
+                src="/images/skynanny-logo.png" 
+                alt="SkyNanny" 
+                className="h-10 w-10 object-contain"
+              />
+              <span className="ml-2 text-xl font-semibold">SkyNanny</span>
+            </div>
+            <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+              La plateforme qui met en relation des familles avec des babysitters qualifies 
+              qui voyagent sur le meme vol. Voyagez serein, voyagez avec SkyNanny.
+            </p>
+            
+            {/* Réseaux Sociaux */}
+            <div className="flex gap-3">
+              {/* Facebook */}
+              <a 
+                href="https://facebook.com/skynanny" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+
+              {/* Instagram */}
+              <a 
+                href="https://instagram.com/skynanny" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+
+              {/* Twitter/X */}
+              <a 
+                href="https://twitter.com/skynanny" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+
+              {/* LinkedIn */}
+              <a 
+                href="https://linkedin.com/company/skynanny" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Colonne 2 - Services */}
+          <div>
+            <h4 className="font-semibold text-white mb-4">Services</h4>
+            <ul className="space-y-3">
+              <li>
+                <button onClick={() => navigate('/services')} className="text-gray-400 hover:text-white transition text-sm">
+                  Pour les Familles
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/services')} className="text-gray-400 hover:text-white transition text-sm">
+                  Pour les Babysitters
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/how-it-works')} className="text-gray-400 hover:text-white transition text-sm">
+                  Comment ca marche
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/search/family')} className="text-gray-400 hover:text-white transition text-sm">
+                  Trouver babysitter
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/search/babysitter')} className="text-gray-400 hover:text-white transition text-sm">
+                  Devenir babysitter
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Colonne 3 - Ressources */}
+          <div>
+            <h4 className="font-semibold text-white mb-4">Ressources</h4>
+            <ul className="space-y-3">
+              <li>
+                <button onClick={() => navigate('/about')} className="text-gray-400 hover:text-white transition text-sm">
+                  A propos
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/faq')} className="text-gray-400 hover:text-white transition text-sm">
+                  FAQ
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/contact')} className="text-gray-400 hover:text-white transition text-sm">
+                  Contact
+                </button>
+              </li>
+              <li>
+                <a href="mailto:contact@sky-nanny.com" className="text-gray-400 hover:text-white transition text-sm flex items-center gap-2">
+                  <Mail size={14} />
+                  contact@sky-nanny.com
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Colonne 4 - Legal */}
+          <div>
+            <h4 className="font-semibold text-white mb-4">Legal</h4>
+            <ul className="space-y-3">
+              <li>
+                <button onClick={() => navigate('/legal/terms')} className="text-gray-400 hover:text-white transition text-sm">
+                  CGU
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/legal/privacy')} className="text-gray-400 hover:text-white transition text-sm">
+                  Confidentialite
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/legal/cookies')} className="text-gray-400 hover:text-white transition text-sm">
+                  Cookies
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/legal/mentions')} className="text-gray-400 hover:text-white transition text-sm">
+                  Mentions legales
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/legal/charter')} className="text-gray-400 hover:text-white transition text-sm">
+                  Charte qualite
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        {/* Texte légal */}
-        <div className="max-w-4xl mx-auto text-xs text-gray-500 leading-relaxed text-center mb-4">
-          <p className="mb-3">
-            SkyNanny est une plateforme en ligne permettant de connecter les familles et les babysitters pour des vols en avion. 
-            Les familles à la recherche de babysitters peuvent être contactées par les babysitters et consulter des profils sans frais. 
-            Contacter les babysitters requiert cependant une mise en relation payante (commission 10%). Nous ne mettons pas directement en contact les familles 
-            et les babysitters, ni ne sélectionnons d'annonces pour les babysitters ou de profils de babysitters à destination des familles.
-          </p>
-          <p>
-            SkyNanny ne vérifie pas l'identité ou la véracité des informations communiquées par les familles ou les babysitters. 
-            Pour plus d'informations sur la vérification de l'identité et des informations postées par les autres membres, 
-            nous vous invitons à visiter notre <a href="/security" className="underline hover:text-gray-700">Centre de Sécurité</a>.
-          </p>
-        </div>
-
-        {/* Copyright */}
-        <div className="text-center text-xs text-gray-400">
-          <p>SkyNanny est une marque déposée de SkyNanny Inc. © 2025-2026 SkyNanny Europe GmbH.</p>
-          <p className="mt-1">Tous droits réservés.</p>
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-400 text-sm">
+              2026 SkyNanny. Tous droits reserves.
+            </p>
+            
+            {/* Sélecteur Pays/Langue */}
+            <div className="flex items-center gap-4">
+              <select className="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                <option value="fr">Francais</option>
+                <option value="en">English</option>
+                <option value="es">Espanol</option>
+              </select>
+              
+              <select className="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                <option value="fr">France (EUR)</option>
+                <option value="us">USA (USD)</option>
+                <option value="uk">UK (GBP)</option>
+                <option value="ca">Canada (CAD)</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
