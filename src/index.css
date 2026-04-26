@@ -35,3 +35,214 @@ strong, b {
 button {
   font-weight: 700;
 }
+/* ========================================
+   MOBILE ANIMATIONS
+   ======================================== */
+
+/* Slide down animation for mobile menu */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.2s ease-out;
+}
+
+/* ========================================
+   MOBILE TOUCH OPTIMIZATIONS
+   ======================================== */
+
+/* Increase touch target size on mobile */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px; /* Apple's recommended touch target */
+    min-width: 44px;
+  }
+  
+  /* Better tap highlighting */
+  * {
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  /* Smooth scrolling on mobile */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ========================================
+   MOBILE-SPECIFIC SPACING
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Reduce padding on mobile */
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Better mobile containers */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Larger text on mobile for readability */
+  body {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* ========================================
+   MOBILE CARDS OPTIMIZATION
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Cards stack better on mobile */
+  .grid > div {
+    margin-bottom: 1rem;
+  }
+  
+  /* Better card shadows on mobile */
+  .shadow-lg {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ========================================
+   MOBILE FORMS
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Larger inputs on mobile */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 0.875rem 1rem !important;
+  }
+  
+  /* Better button sizing on mobile */
+  button[type="submit"] {
+    padding: 1rem 1.5rem !important;
+    font-size: 1.125rem !important;
+  }
+}
+
+/* ========================================
+   MOBILE NAVIGATION
+   ======================================== */
+
+/* Sticky navbar on mobile */
+@media (max-width: 768px) {
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  
+  /* Mobile menu backdrop */
+  .mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 40;
+  }
+}
+
+/* ========================================
+   MOBILE HERO SECTIONS
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Smaller hero text on mobile */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
+  }
+  
+  /* Better CTA buttons on mobile */
+  .hero-cta {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* ========================================
+   MOBILE FOOTER
+   ======================================== */
+
+@media (max-width: 768px) {
+  footer {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Stack footer columns on mobile */
+  footer .grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+/* ========================================
+   MOBILE TESTIMONIALS
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Better testimonial cards on mobile */
+  .testimonial-card {
+    padding: 1.5rem !important;
+  }
+  
+  /* Larger stars on mobile */
+  .star-rating svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+}
+
+/* ========================================
+   MOBILE ACCESSIBILITY
+   ======================================== */
+
+/* Focus states visible on mobile */
+@media (max-width: 768px) {
+  *:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+  }
+  
+  /* Better active states for touch */
+  button:active, a:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
+  }
+}
+
+/* ========================================
+   PREVENT HORIZONTAL SCROLL ON MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  * {
+    max-width: 100%;
+  }
+}

@@ -10,64 +10,70 @@ const HomePage = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/5 to-secondary/10 py-20 px-4">
+       {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-primary/5 to-secondary/10 py-12 md:py-20 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div>
-              <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight">
-                Voyagez sereinement en famille
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Texte */}
+            <div className="text-center lg:text-left order-2 lg:order-1">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-4 md:mb-6 leading-tight">
+                Voyagez serein avec vos enfants
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Des babysitters qualifiés pour vous accompagner pendant vos vols. 
-                Profitez de votre voyage l'esprit tranquille.
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed px-4 lg:px-0">
+                Des babysitters qualifies sur votre vol pour accompagner vos enfants 
+                pendant que vous profitez du voyage
               </p>
 
-              {/* Barre de recherche */}
-              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Numéro de vol
-                </label>
-                <div className="flex gap-3">
-                  <input
-                    type="text"
-                    placeholder="Ex: AF007, BA105..."
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-base"
-                  />
-                  <button 
-                    onClick={() => navigate('/search/family')}
-                    className="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition flex items-center gap-2"
-                  >
-                    <Search size={20} />
-                    Rechercher
-                  </button>
-                </div>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-4 lg:px-0">
+                <button
+                  onClick={() => navigate('/search/family')}
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition text-base md:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-95"
+                >
+                  Trouver une babysitter
+                </button>
+                <button
+                  onClick={() => navigate('/search/babysitter')}
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-primary text-primary rounded-lg font-medium hover:bg-gray-50 transition text-base md:text-lg active:scale-95"
+                >
+                  Devenir babysitter
+                </button>
               </div>
 
-              {/* Trust badges */}
-              <div className="flex gap-6 mt-8 text-sm text-gray-600">
+              {/* Trust Indicators */}
+              <div className="mt-8 md:mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 text-sm text-gray-600 px-4 lg:px-0">
                 <div className="flex items-center gap-2">
-                  <Check size={18} className="text-green-500" />
-                  <span>Vérification complète</span>
+                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="whitespace-nowrap">Babysitters verifies</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check size={18} className="text-green-500" />
-                  <span>Paiement sécurisé</span>
+                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="whitespace-nowrap">Paiement securise</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="whitespace-nowrap">2,500+ familles</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Image */}
-            <div className="hidden md:block">
-              <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 text-white shadow-2xl">
-                <div className="flex items-center justify-center h-96">
-                  <div className="text-center">
-                    <Plane size={120} className="mx-auto mb-6 opacity-20" />
-                    <p className="text-2xl font-light">
-                      Illustration de voyage<br />familial serein
-                    </p>
-                  </div>
+            {/* Image/Illustration */}
+            <div className="order-1 lg:order-2">
+              <div className="relative w-full max-w-md mx-auto lg:max-w-none aspect-square lg:aspect-auto bg-white/50 rounded-2xl lg:rounded-3xl shadow-2xl flex items-center justify-center p-6 md:p-8 border-4 border-white/80">
+                <div className="text-center">
+                  <div className="text-6xl md:text-8xl mb-4">✈️</div>
+                  <p className="text-lg md:text-xl font-medium text-gray-700">
+                    Illustration voyage familial serein
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    (Image/video a venir)
+                  </p>
                 </div>
               </div>
             </div>

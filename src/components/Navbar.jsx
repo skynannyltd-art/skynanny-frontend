@@ -120,17 +120,16 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
+{/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="px-4 py-3 space-y-3">
+        <div className="md:hidden bg-white border-t border-gray-200 animate-slideDown">
+          <div className="px-4 py-3 space-y-1">
             <button
               onClick={() => {
                 navigate('/services');
                 setMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+              className="block w-full text-left text-gray-700 hover:bg-gray-50 hover:text-primary transition font-medium py-3 px-4 rounded-lg"
             >
               Services
             </button>
@@ -140,7 +139,7 @@ const Navbar = () => {
                 navigate('/how-it-works');
                 setMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+              className="block w-full text-left text-gray-700 hover:bg-gray-50 hover:text-primary transition font-medium py-3 px-4 rounded-lg"
             >
               Comment ca marche
             </button>
@@ -150,7 +149,7 @@ const Navbar = () => {
                 navigate('/about');
                 setMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+              className="block w-full text-left text-gray-700 hover:bg-gray-50 hover:text-primary transition font-medium py-3 px-4 rounded-lg"
             >
               A propos
             </button>
@@ -160,7 +159,7 @@ const Navbar = () => {
                 navigate('/faq');
                 setMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+              className="block w-full text-left text-gray-700 hover:bg-gray-50 hover:text-primary transition font-medium py-3 px-4 rounded-lg"
             >
               FAQ
             </button>
@@ -170,18 +169,18 @@ const Navbar = () => {
                 navigate('/contact');
                 setMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+              className="block w-full text-left text-gray-700 hover:bg-gray-50 hover:text-primary transition font-medium py-3 px-4 rounded-lg"
             >
               Contact
             </button>
 
-            <div className="border-t border-gray-200 pt-3 space-y-3">
+            <div className="border-t border-gray-200 pt-3 mt-3 space-y-1">
               <button
                 onClick={() => {
                   navigate('/login');
                   setMobileMenuOpen(false);
                 }}
-                className="block w-full text-left text-gray-700 hover:text-primary transition font-medium py-2"
+                className="block w-full text-left text-gray-700 hover:bg-gray-50 hover:text-primary transition font-medium py-3 px-4 rounded-lg"
               >
                 Connexion
               </button>
@@ -191,7 +190,7 @@ const Navbar = () => {
                   navigate('/welcome');
                   setMobileMenuOpen(false);
                 }}
-                className="block w-full px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition font-medium text-center"
+                className="block w-full px-5 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition font-medium text-center shadow-lg"
               >
                 Inscrire
               </button>
@@ -199,7 +198,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+     </nav>
   );
 };
 

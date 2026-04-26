@@ -2,6 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 
 // Pages
+import BabysitterDetailPage from './pages/admin/BabysitterDetailPage';
+import BabysittersPage from './pages/admin/BabysittersPage';
+import AdminLayout from './components/AdminLayout';
+import AdminLoginPage from './pages/admin/AdminLoginPage';
+import DashboardPage from './pages/admin/DashboardPage';
 import HomePage from './pages/HomePage';
 import WelcomePage from './pages/WelcomePage';
 import SearchFamilyPage from './pages/SearchFamilyPage';
@@ -24,7 +29,7 @@ function App() {
             {/* HomePage */}
             <Route path="/" element={<HomePage />} />
             
-            {/* Welcome page (choix type utilisateur) */}
+            {/* Welcome page */}
             <Route path="/welcome" element={<WelcomePage />} />
             
             {/* Recherche */}
@@ -41,7 +46,19 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
-           
+
+            {/* Routes Admin */}
+            <Route path="/admin/login" element={<AdminLoginPage />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<DashboardPage />} />
+              <Route path="babysitters" element={<BabysittersPage />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<DashboardPage />} />
+              <Route path="babysitters" element={<BabysittersPage />} />
+              <Route path="babysitters/:id" element={<BabysitterDetailPage />} />
+            </Route>
+            </Route>
+
             {/* Route 404 - Doit etre en dernier */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

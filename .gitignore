@@ -1,20 +1,41 @@
-# Dependencies
-node_modules/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Build
-dist/
+# testing
+/coverage
 
-# Env
-.env
-.env.local
+# production
+/build
+/dist
 
-# Logs
-*.log
-
-# OS
+# misc
 .DS_Store
-Thumbs.db
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# Admin scripts (sensibles)
+setup-admin.cjs
+test-connection.cjs
+fix-constraint.cjs
+create-test-babysitter.cjs
+test-api-babysitters.cjs
+*.cjs
+
+# Environnement
+.env
+.env.local
