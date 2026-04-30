@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 
-// Pages publiques
 import HomePage from './pages/HomePage';
 import WelcomePage from './pages/WelcomePage';
 import SearchFamilyPage from './pages/SearchFamilyPage';
@@ -15,7 +14,6 @@ import ServicesPage from './pages/ServicesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// Admin
 import AdminLayout from './components/AdminLayout';
 import AdminLoginPage from './pages/admin/AdminLoginPage';
 import DashboardPage from './pages/admin/DashboardPage';
@@ -24,6 +22,10 @@ import BabysitterDetailPage from './pages/admin/BabysitterDetailPage';
 import FlightsPage from './pages/admin/FlightsPage';
 import FlightDetailPage from './pages/admin/FlightDetailPage';
 import BookingsPage from './pages/admin/BookingsPage';
+import BookingDetailPage from './pages/admin/BookingDetailPage';
+import StatsPage from './pages/admin/StatsPage';
+import UsersPage from './pages/admin/UsersPage';
+import DocumentsPage from './pages/admin/DocumentsPage';
 
 function App() {
   return (
@@ -52,6 +54,10 @@ function App() {
               <Route path="flights" element={<FlightsPage />} />
               <Route path="flights/:id" element={<FlightDetailPage />} />
               <Route path="bookings" element={<BookingsPage />} />
+              <Route path="bookings/:id" element={<BookingDetailPage />} />
+              <Route path="stats" element={<StatsPage />} />
+              <Route path="users" element={<UsersPage />} />
+              <Route path="documents" element={<DocumentsPage />} />
             </Route>
 
             <Route path="*" element={<NotFoundPage />} />
