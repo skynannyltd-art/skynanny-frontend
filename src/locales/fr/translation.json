@@ -89,19 +89,17 @@
     "button": "Create my free account"
   },
   "contact": {
-    "title": "Contact Us",
-    "subtitle": "Have a question? Our team is here to help",
-    "namePlaceholder": "Your name",
-    "emailPlaceholder": "Your email",
-    "subjectPlaceholder": "Subject",
-    "messagePlaceholder": "Your message",
-    "sendButton": "Send message",
-    "successMessage": "Message sent successfully!",
-    "addressTitle": "Address",
-    "phoneTitle": "Phone",
+    "title": "Contactez-nous",
+    "subtitle": "Une question ? Notre équipe est là pour vous aider",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "Votre email",
+    "subjectPlaceholder": "Sujet",
+    "messagePlaceholder": "Votre message",
+    "sendButton": "Envoyer le message",
+    "successMessage": "Message envoyé avec succès !",
     "emailTitle": "Email",
-    "hoursTitle": "Hours",
-    "hoursValue": "Mon-Fri: 9am-6pm"
+    "responseTime": "Temps de réponse",
+    "responseTimeDesc": "Notre équipe vous répondra dans les plus brefs délais, généralement sous 24-48 heures ouvrées."
   },
   "faq": {
     "title": "Frequently Asked Questions",

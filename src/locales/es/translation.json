@@ -87,8 +87,7 @@
     "title": "¿Listo para comenzar?",
     "subtitle": "Únete a miles de familias y niñeras que confían en nosotros",
     "button": "Crear mi cuenta gratis"
-  },
-  "contact": {
+  },"contact": {
     "title": "Contáctanos",
     "subtitle": "¿Tienes una pregunta? Nuestro equipo está aquí para ayudarte",
     "namePlaceholder": "Tu nombre",
@@ -97,11 +96,9 @@
     "messagePlaceholder": "Tu mensaje",
     "sendButton": "Enviar mensaje",
     "successMessage": "¡Mensaje enviado con éxito!",
-    "addressTitle": "Dirección",
-    "phoneTitle": "Teléfono",
     "emailTitle": "Correo",
-    "hoursTitle": "Horario",
-    "hoursValue": "Lun-Vie: 9h-18h"
+    "responseTime": "Tiempo de respuesta",
+    "responseTimeDesc": "Nuestro equipo responderá lo antes posible, generalmente dentro de 24-48 horas hábiles."
   },
   "faq": {
     "title": "Preguntas Frecuentes",

@@ -97,11 +97,9 @@
     "messagePlaceholder": "Your message",
     "sendButton": "Send message",
     "successMessage": "Message sent successfully!",
-    "addressTitle": "Address",
-    "phoneTitle": "Phone",
     "emailTitle": "Email",
-    "hoursTitle": "Hours",
-    "hoursValue": "Mon-Fri: 9am-6pm"
+    "responseTime": "Response Time",
+    "responseTimeDesc": "Our team will respond as soon as possible, usually within 24-48 business hours."
   },
   "faq": {
     "title": "Frequently Asked Questions",

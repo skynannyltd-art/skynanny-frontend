@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -113,54 +113,30 @@ const ContactPage = () => {
               </form>
             </div>
 
-            {/* Contact Info */}
+            {/* Contact Info - EMAIL UNIQUEMENT */}
             <div className="space-y-8">
-              <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-primary" size={24} />
+                  <div className="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="text-purple-600" size={28} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{t('contact.addressTitle')}</h3>
-                    <p className="text-gray-600">123 Avenue des Champs-Élysées<br />75008 Paris, France</p>
+                    <h3 className="font-semibold text-gray-900 mb-2 text-xl">{t('contact.emailTitle')}</h3>
+                    <a href="mailto:contact@sky-nanny.com" className="text-primary text-lg hover:underline">
+                      contact@sky-nanny.com
+                    </a>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-green-600" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{t('contact.phoneTitle')}</h3>
-                    <p className="text-gray-600">+33 1 23 45 67 89</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-purple-600" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{t('contact.emailTitle')}</h3>
-                    <p className="text-gray-600">contact@sky-nanny.com</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="text-orange-600" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{t('contact.hoursTitle')}</h3>
-                    <p className="text-gray-600">{t('contact.hoursValue')}</p>
-                  </div>
-                </div>
+              {/* Message d'information supplémentaire */}
+              <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  {t('contact.responseTime')}
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {t('contact.responseTimeDesc')}
+                </p>
               </div>
             </div>
           </div>
