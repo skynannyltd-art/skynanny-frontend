@@ -61,8 +61,8 @@ const AboutPage = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Nos Valeurs</h2>
-            <p className="text-xl text-gray-600">Les principes qui guident notre action au quotidien</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('about.valuesTitle')}</h2>
+            <p className="text-xl text-gray-600">{t('about.valuesSubtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -70,9 +70,9 @@ const AboutPage = () => {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="text-green-600" size={32} />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Sécurité</h3>
+              <h3 className="text-xl font-semibold mb-3">{t('about.securityTitle')}</h3>
               <p className="text-gray-600">
-                La sécurité de vos enfants est notre priorité absolue. Vérifications rigoureuses de tous nos babysitters.
+                {t('about.securityDesc')}
               </p>
             </div>
 
@@ -80,9 +80,9 @@ const AboutPage = () => {
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Heart className="text-red-600" size={32} />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Bienveillance</h3>
+              <h3 className="text-xl font-semibold mb-3">{t('about.careTitle')}</h3>
               <p className="text-gray-600">
-                Une communauté basée sur la confiance, le respect et l'attention portée à chacun.
+                {t('about.careDesc')}
               </p>
             </div>
 
@@ -90,9 +90,9 @@ const AboutPage = () => {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Globe className="text-primary" size={32} />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Innovation</h3>
+              <h3 className="text-xl font-semibold mb-3">{t('about.innovationTitle')}</h3>
               <p className="text-gray-600">
-                Une solution moderne et innovante pour répondre aux nouveaux besoins des familles.
+                {t('about.innovationDesc')}
               </p>
             </div>
 
@@ -100,9 +100,9 @@ const AboutPage = () => {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="text-purple-600" size={32} />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Communauté</h3>
+              <h3 className="text-xl font-semibold mb-3">{t('about.communityTitle')}</h3>
               <p className="text-gray-600">
-                Créer des liens durables entre familles et babysitters au-delà des frontières.
+                {t('about.communityDesc')}
               </p>
             </div>
           </div>
@@ -113,25 +113,20 @@ const AboutPage = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Notre Histoire</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('about.historyTitle')}</h2>
           </div>
 
           <div className="prose prose-lg mx-auto text-gray-700">
             <p className="text-lg leading-relaxed mb-6">
-              SkyNanny est née d'une observation simple : voyager avec des enfants en bas âge peut être 
-              stressant pour les parents, et de nombreux babysitters souhaitent voyager mais trouvent 
-              les coûts prohibitifs.
+              {t('about.historyP1')}
             </p>
 
             <p className="text-lg leading-relaxed mb-6">
-              Nous avons créé une plateforme qui répond à ces deux besoins de manière innovante. En 
-              connectant les familles avec des babysitters qualifiés qui voyagent sur le même vol, nous 
-              offrons une solution unique qui bénéficie à tous.
+              {t('about.historyP2')}
             </p>
 
             <p className="text-lg leading-relaxed mb-6">
-              Aujourd'hui, SkyNanny est devenue la référence pour des milliers de familles et de babysitters 
-              à travers le monde, créant des expériences de voyage mémorables et sécurisées.
+              {t('about.historyP3')}
             </p>
           </div>
         </div>
@@ -141,37 +136,37 @@ const AboutPage = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Notre Engagement Qualité</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('about.qualityTitle')}</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-6">
               <div className="text-center mb-4">
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                <p className="text-gray-600">Babysitters vérifiés</p>
+                <div className="text-4xl font-bold text-primary mb-2">{t('about.quality100')}</div>
+                <p className="text-gray-600">{t('about.quality100Label')}</p>
               </div>
               <p className="text-sm text-gray-600 text-center">
-                Casier judiciaire, diplômes PSC1 et références systématiquement contrôlés
+                {t('about.quality100Desc')}
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6">
               <div className="text-center mb-4">
-                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-                <p className="text-gray-600">Support disponible</p>
+                <div className="text-4xl font-bold text-primary mb-2">{t('about.quality247')}</div>
+                <p className="text-gray-600">{t('about.quality247Label')}</p>
               </div>
               <p className="text-sm text-gray-600 text-center">
-                Une équipe dédiée pour répondre à vos questions à tout moment
+                {t('about.quality247Desc')}
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-6">
               <div className="text-center mb-4">
-                <div className="text-4xl font-bold text-primary mb-2">⭐ 4.8</div>
-                <p className="text-gray-600">Note moyenne</p>
+                <div className="text-4xl font-bold text-primary mb-2">{t('about.quality48')}</div>
+                <p className="text-gray-600">{t('about.quality48Label')}</p>
               </div>
               <p className="text-sm text-gray-600 text-center">
-                Des milliers de familles satisfaites nous font confiance
+                {t('about.quality48Desc')}
               </p>
             </div>
           </div>
