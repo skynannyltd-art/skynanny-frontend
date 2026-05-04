@@ -13,6 +13,11 @@ import FAQPage from './pages/FAQPage';
 import ServicesPage from './pages/ServicesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
 import NotFoundPage from './pages/NotFoundPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
+import CookiesPage from './pages/CookiesPage';
+import LegalPage from './pages/LegalPage';
+import QualityCharterPage from './pages/QualityCharterPage';
 
 import AdminLayout from './components/AdminLayout';
 import AdminLoginPage from './pages/admin/AdminLoginPage';
@@ -44,6 +49,11 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/cookies" element={<CookiesPage />} />
+            <Route path="/legal" element={<LegalPage />} />
+            <Route path="/quality-charter" element={<QualityCharterPage />} />
 
             <Route path="/admin/login" element={<AdminLoginPage />} />
             <Route path="/admin" element={<AdminLayout />}>

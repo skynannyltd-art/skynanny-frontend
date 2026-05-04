@@ -1,244 +1,237 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { Mail, Lock, User, Phone, Users, Baby } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
     firstName: '',
     lastName: '',
+    email: '',
     phone: '',
+    password: '',
+    confirmPassword: '',
+    userType: 'family',
+    acceptTerms: false
   });
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [searchInfo, setSearchInfo] = useState({});
 
-  useEffect(() => {
-    const userType = sessionStorage.getItem('userType');
-    const searchType = sessionStorage.getItem('searchType');
-    const flightNumber = sessionStorage.getItem('flightNumber');
-    const departureCity = sessionStorage.getItem('departureCity');
-    const arrivalCity = sessionStorage.getItem('arrivalCity');
-
-    setSearchInfo({
-      userType,
-      searchType,
-      flightNumber,
-      departureCity,
-      arrivalCity,
-    });
-
-    if (!userType) {
-      navigate('/');
-    }
-  }, [navigate]);
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
-
+    
     if (formData.password !== formData.confirmPassword) {
-      setError('Les mots de passe ne correspondent pas');
+      alert(t('auth.passwordMismatch'));
       return;
     }
 
-    if (formData.password.length < 6) {
-      setError('Le mot de passe doit contenir au moins 6 caractères');
+    if (!formData.acceptTerms) {
+      alert(t('auth.mustAcceptTerms'));
       return;
     }
 
-    try {
-      setLoading(true);
-      
-      const response = await fetch('https://api.sky-nanny.com/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          phone: formData.phone,
-          user_type: searchInfo.userType,
-        }),
-      });
+    console.log('Register:', formData);
+    alert(t('search.comingSoon'));
+  };
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || 'Erreur lors de la création du compte');
-      }
-
-      alert('Compte créé avec succès ! Connectez-vous maintenant.');
-      navigate('/login');
-    } catch (err) {
-      console.error('Erreur inscription:', err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ 
+      ...formData, 
+      [name]: type === 'checkbox' ? checked : value 
+    });
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
+      
+      <div className="flex items-center justify-center px-4 py-12">
+        <div className="max-w-2xl w-full">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="text-center mb-8">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('auth.registerTitle')}</h1>
+              <p className="text-gray-600">{t('auth.registerSubtitle')}</p>
+            </div>
 
-      <div className="flex-1 container mx-auto px-4 py-12">
-        <div className="max-w-md mx-auto">
-          {/* Logo */}
-          <div className="text-center mb-8">
-            <img 
-              src="/images/skynanny-logo.png" 
-              alt="SkyNanny" 
-              className="w-20 h-20 mx-auto object-contain mb-4"
-            />
-            <h1 className="text-2xl text-gray-900 mb-2 font-normal">
-              Créer un compte
-            </h1>
-            <p className="text-sm text-gray-600">
-              Étape 1 sur 4
-            </p>
-          </div>
-
-          {/* Info Recherche */}
-          <div className="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
-            <p className="text-xs text-gray-500 mb-1">Votre recherche :</p>
-            {searchInfo.searchType === 'flight' ? (
-              <p className="text-sm font-normal text-gray-900">
-                Vol {searchInfo.flightNumber}
-              </p>
-            ) : (
-              <p className="text-sm font-normal text-gray-900">
-                Depuis {searchInfo.departureCity}
-                {searchInfo.arrivalCity && ` → ${searchInfo.arrivalCity}`}
-              </p>
-            )}
-            <p className="text-xs text-gray-500 mt-1">
-              Type : {searchInfo.userType === 'family' ? 'Famille' : 'Babysitter'}
-            </p>
-          </div>
-
-          {/* Formulaire */}
-          <div className="bg-white">
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-6 text-sm">
-                {error}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* User Type */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  {t('auth.userTypeLabel')}
+                </label>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, userType: 'family' })}
+                    className={`p-4 rounded-lg border-2 transition flex items-center justify-center gap-2 ${
+                      formData.userType === 'family'
+                        ? 'border-primary bg-blue-50 text-primary'
+                        : 'border-gray-300 hover:border-gray-400'
+                    }`}
+                  >
+                    <Users size={20} />
+                    {t('auth.userTypeFamily')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, userType: 'babysitter' })}
+                    className={`p-4 rounded-lg border-2 transition flex items-center justify-center gap-2 ${
+                      formData.userType === 'babysitter'
+                        ? 'border-secondary bg-pink-50 text-secondary'
+                        : 'border-gray-300 hover:border-gray-400'
+                    }`}
+                  >
+                    <Baby size={20} />
+                    {t('auth.userTypeBabysitter')}
+                  </button>
+                </div>
               </div>
-            )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Prénom & Nom */}
-              <div className="grid grid-cols-2 gap-3">
+              {/* Name Fields */}
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-gray-700 mb-1.5">
-                    Prénom
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                    <User size={18} className="text-gray-400" />
+                    {t('auth.firstNameLabel')}
                   </label>
                   <input
                     type="text"
-                    required
-                    placeholder="Marie"
+                    name="firstName"
                     value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs text-gray-700 mb-1.5">
-                    Nom
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                    <User size={18} className="text-gray-400" />
+                    {t('auth.lastNameLabel')}
                   </label>
                   <input
                     type="text"
-                    required
-                    placeholder="Dupont"
+                    name="lastName"
                     value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-xs text-gray-700 mb-1.5">
-                  Adresse e-mail
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                  <Mail size={18} className="text-gray-400" />
+                  {t('auth.emailLabel')}
                 </label>
                 <input
                   type="email"
-                  required
-                  placeholder="vous@exemple.com"
+                  name="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder={t('auth.emailPlaceholder')}
                 />
               </div>
 
-              {/* Téléphone */}
+              {/* Phone */}
               <div>
-                <label className="block text-xs text-gray-700 mb-1.5">
-                  Numéro de téléphone
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                  <Phone size={18} className="text-gray-400" />
+                  {t('auth.phoneLabel')}
                 </label>
                 <input
                   type="tel"
-                  required
-                  placeholder="06 12 34 56 78"
+                  name="phone"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
-                />
-              </div>
-
-              {/* Mot de passe */}
-              <div>
-                <label className="block text-xs text-gray-700 mb-1.5">
-                  Mot de passe
-                </label>
-                <input
-                  type="password"
+                  onChange={handleChange}
                   required
-                  placeholder="Minimum 6 caractères"
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
 
-              {/* Confirmer mot de passe */}
-              <div>
-                <label className="block text-xs text-gray-700 mb-1.5">
-                  Confirmer le mot de passe
+              {/* Password Fields */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                    <Lock size={18} className="text-gray-400" />
+                    {t('auth.passwordLabel')}
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder={t('auth.passwordPlaceholder')}
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                    <Lock size={18} className="text-gray-400" />
+                    {t('auth.confirmPasswordLabel')}
+                  </label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder={t('auth.passwordPlaceholder')}
+                  />
+                </div>
+              </div>
+
+              {/* Terms and Conditions Checkbox */}
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="acceptTerms"
+                    checked={formData.acceptTerms}
+                    onChange={handleChange}
+                    required
+                    className="mt-1 w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
+                  />
+                  <span className="text-sm text-gray-700 leading-relaxed">
+                    {t('auth.acceptTermsPart1')}{' '}
+                    <a 
+                      href="/terms" 
+                      target="_blank"
+                      className="text-primary font-semibold hover:underline"
+                    >
+                      {t('auth.termsLink')}
+                    </a>
+                    {' '}{t('auth.acceptTermsPart2')}
+                  </span>
                 </label>
-                <input
-                  type="password"
-                  required
-                  placeholder="Retapez votre mot de passe"
-                  value={formData.confirmPassword}
-                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
-                />
               </div>
 
-              {/* Bouton */}
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full bg-primary text-white py-3 rounded-md font-normal hover:bg-primary/90 transition disabled:opacity-50 mt-6 text-sm"
+                className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition font-semibold"
               >
-                {loading ? 'Création en cours...' : 'Continuer'}
+                {t('auth.registerButton')}
               </button>
             </form>
 
-            {/* Lien connexion */}
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Vous avez déjà un compte ?{' '}
+              <p className="text-gray-600">
+                {t('auth.hasAccount')}{' '}
                 <button
                   onClick={() => navigate('/login')}
-                  className="text-gray-900 underline hover:text-primary transition"
+                  className="text-primary font-semibold hover:underline"
                 >
-                  Connectez-vous
+                  {t('auth.loginLink')}
                 </button>
               </p>
             </div>

@@ -1,116 +1,107 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Plane, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Search, Calendar, MapPin } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const SearchFamilyPage = () => {
-  const navigate = useNavigate();
-  const [flightNumber, setFlightNumber] = useState('');
-  const [departureCity, setDepartureCity] = useState('');
+  const { t } = useTranslation();
+  const [searchData, setSearchData] = useState({
+    destination: '',
+    date: '',
+    children: ''
+  });
 
-  const handleFlightNumberSearch = () => {
-    if (flightNumber.trim()) {
-      sessionStorage.setItem('searchType', 'flight');
-      sessionStorage.setItem('flightNumber', flightNumber);
-      sessionStorage.setItem('userType', 'family');
-      navigate('/register');
-    } else {
-      alert('Veuillez entrer un numéro de vol');
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(t('search.comingSoon'));
   };
 
-  const handleFlexibleSearch = () => {
-    if (departureCity.trim()) {
-      sessionStorage.setItem('searchType', 'flexible');
-      sessionStorage.setItem('departureCity', departureCity);
-      sessionStorage.setItem('userType', 'family');
-      navigate('/register');
-    } else {
-      alert('Veuillez entrer une ville de départ');
-    }
+  const handleChange = (e) => {
+    setSearchData({ ...searchData, [e.target.name]: e.target.value });
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
+      
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-secondary to-pink-700 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl font-bold mb-6">{t('search.babysitterTitle')}</h1>
+          <p className="text-xl text-pink-100 max-w-3xl mx-auto">
+            {t('search.babysitterSubtitle')}
+          </p>
+        </div>
+      </section>
 
-      {/* Contenu */}
-      <div className="flex-1 container mx-auto px-4 py-12">
-        <div className="max-w-xl mx-auto">
-          <h1 className="text-2xl text-gray-900 text-center mb-10 font-normal">
-            Comment souhaitez-vous chercher ?
-          </h1>
-
-          <div className="space-y-4">
-            {/* Option 1 : Numéro de vol */}
-            <div className="bg-white border border-gray-300 rounded-lg p-6 hover:border-primary hover:shadow-sm transition">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                  <Plane className="text-gray-700" size={20} />
-                </div>
-                <h2 className="text-base font-normal text-gray-900">J'ai un numéro de vol</h2>
-              </div>
-              
-              <div className="space-y-3">
+      {/* Search Form */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                  <MapPin size={18} className="text-secondary" />
+                  {t('search.destinationLabel')}
+                </label>
                 <input
                   type="text"
-                  placeholder="Ex: AF007, BA105..."
-                  value={flightNumber}
-                  onChange={(e) => setFlightNumber(e.target.value.toUpperCase())}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
+                  name="destination"
+                  value={searchData.destination}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                  placeholder={t('search.destinationPlaceholder')}
                 />
-                
-                <button
-                  onClick={handleFlightNumberSearch}
-                  className="w-full bg-primary text-white py-2.5 rounded-md font-normal hover:bg-primary/90 transition text-sm"
-                >
-                  Continuer
-                </button>
               </div>
-            </div>
 
-            {/* Séparateur */}
-            <div className="flex items-center gap-4 py-2">
-              <div className="flex-1 h-px bg-gray-200"></div>
-              <span className="text-gray-400 text-xs">OU</span>
-              <div className="flex-1 h-px bg-gray-200"></div>
-            </div>
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                  <Calendar size={18} className="text-secondary" />
+                  {t('search.dateLabel')}
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  value={searchData.date}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                />
+              </div>
 
-            {/* Option 2 : Flexible */}
-            <div className="bg-white border border-gray-300 rounded-lg p-6 hover:border-primary hover:shadow-sm transition">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                  <MapPin className="text-gray-700" size={20} />
-                </div>
-                <h2 className="text-base font-normal text-gray-900">Je suis flexible</h2>
-              </div>
-              
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-xs text-gray-600 mb-1.5">
-                    Ma ville de départ
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ex: Paris, Londres..."
-                    value={departureCity}
-                    onChange={(e) => setDepartureCity(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm"
-                  />
-                </div>
-                
-                <button
-                  onClick={handleFlexibleSearch}
-                  className="w-full bg-primary text-white py-2.5 rounded-md font-normal hover:bg-primary/90 transition text-sm"
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                  <Search size={18} className="text-secondary" />
+                  {t('search.childrenLabel')}
+                </label>
+                <select
+                  name="children"
+                  value={searchData.children}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
                 >
-                  Continuer
-                </button>
+                  <option value="">{t('search.childrenPlaceholder')}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4+</option>
+                </select>
               </div>
-            </div>
+
+              <button
+                type="submit"
+                className="w-full bg-secondary text-white px-8 py-4 rounded-lg hover:bg-pink-600 transition font-semibold text-lg flex items-center justify-center gap-2"
+              >
+                <Search size={20} />
+                {t('search.searchButton')}
+              </button>
+            </form>
           </div>
         </div>
-      </div>
+      </section>
 
       <Footer />
     </div>
