@@ -32,13 +32,10 @@
     "ctaBabysitter": "I'm a babysitter"
   },
   "mission": {
-    "title": "Our Mission",
-    "subtitle": "Our mission is twofold:",
-    "familyTitle": "For families,",
-    "familyText": "we make air travel more serene by connecting them with qualified and verified babysitters who will accompany their children during the flight.",
-    "babysitterTitle": "For babysitters,",
-    "babysitterText": "we offer them the opportunity to significantly reduce their travel costs while making the world more accessible. By accompanying families on their trips, they can travel at a lower cost while practicing their passion.",
-    "conclusion": "A win-win solution that transforms every flight into a positive experience for everyone."
+    "title": "Notre Mission",
+    "text": "Notre mission chez SkyNanny est simple mais porteuse de sens : rendre les voyages en avion plus fluides et rassurants pour les familles, tout en ouvrant de nouvelles opportunités aux gardiennes de confiance.\n\nPour les familles, nous offrons la tranquillité d'esprit en les mettant en relation avec des babysitters soigneusement vérifiées et qualifiées qui peuvent accompagner leurs enfants tout au long du voyage. Chaque association repose sur la confiance, la sécurité et une attention sincère, permettant aux parents de voyager en toute sérénité, sachant que leurs enfants sont entre de bonnes mains.\n\nPour les babysitters, SkyNanny propose une façon unique d'explorer le monde de manière plus abordable tout en faisant ce qu'elles aiment. En accompagnant les familles dans leurs déplacements, elles acquièrent une expérience précieuse et bénéficient de coûts de voyage réduits, rendant de nouvelles destinations plus accessibles.\n\nC'est une solution réfléchie et équilibrée. Une solution qui transforme     chaque vol en une expérience plus calme et plus positive pour tous.",
+    "signature": "Kristina Holland",
+    "role": "CEO et Fondatrice de SkyNanny"
   },
   "about": {
     "valuesTitle": "Nos Valeurs",

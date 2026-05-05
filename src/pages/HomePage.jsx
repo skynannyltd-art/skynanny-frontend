@@ -40,38 +40,31 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Notre Mission */}
-      <div className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('mission.title')}</h2>
+     {/* Notre Mission */}
+      <div className="bg-gradient-to-br from-blue-50 to-white py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">{t('mission.title')}</h2>
             
-            <div className="max-w-4xl mx-auto space-y-6 text-lg text-gray-700 leading-relaxed">
-              <p className="font-semibold text-xl text-primary">
-                {t('mission.subtitle')}
-              </p>
-              
-              <div className="bg-blue-50 rounded-xl p-6 text-left">
-                <p className="font-semibold text-gray-900 mb-2">
-                  {t('mission.familyTitle')}
-                </p>
-                <p>
-                  {t('mission.familyText')}
-                </p>
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+              <div 
+                className="text-lg md:text-xl leading-relaxed text-gray-800 mb-8 whitespace-pre-line text-left"
+                style={{ fontFamily: "'Dancing Script', cursive", lineHeight: '1.9' }}
+              >
+                {t('mission.text')}
               </div>
               
-              <div className="bg-pink-50 rounded-xl p-6 text-left">
-                <p className="font-semibold text-gray-900 mb-2">
-                  {t('mission.babysitterTitle')}
+              <div className="border-t-2 border-gray-200 pt-6 text-right">
+                <p 
+                  className="text-3xl md:text-4xl text-primary mb-2"
+                  style={{ fontFamily: "'Dancing Script', cursive" }}
+                >
+                  {t('mission.signature')}
                 </p>
-                <p>
-                  {t('mission.babysitterText')}
+                <p className="text-sm text-gray-600 font-medium">
+                  {t('mission.role')}
                 </p>
               </div>
-              
-              <p className="text-xl font-semibold text-gray-900 pt-4">
-                {t('mission.conclusion')}
-              </p>
             </div>
           </div>
         </div>

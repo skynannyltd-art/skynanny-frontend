@@ -33,12 +33,9 @@
   },
   "mission": {
     "title": "Nuestra Misión",
-    "subtitle": "Nuestra misión es doble:",
-    "familyTitle": "Para las familias,",
-    "familyText": "hacemos que los viajes en avión sean más serenos al conectarlos con niñeras calificadas y verificadas que acompañarán a sus hijos durante el vuelo.",
-    "babysitterTitle": "Para las niñeras,",
-    "babysitterText": "les ofrecemos la oportunidad de reducir significativamente sus costos de viaje mientras hacen el mundo más accesible. Al acompañar a las familias en sus viajes, pueden viajar a menor costo mientras practican su pasión.",
-    "conclusion": "Una solución beneficiosa para todos que transforma cada vuelo en una experiencia positiva para todos."
+    "text": "Nuestra misión en SkyNanny es simple pero significativa: hacer que los viajes en avión sean más fluidos y reconfortantes para las familias, al tiempo que abrimos nuevas oportunidades para cuidadoras de confianza.\n\nPara las familias, brindamos tranquilidad al conectarlas con niñeras cuidadosamente verificadas y calificadas que pueden acompañar a sus hijos durante todo el viaje. Cada conexión se basa en la confianza, la seguridad y el cuidado genuino, para que los padres puedan viajar con confianza sabiendo que sus hijos están en buenas manos.\n\nPara las niñeras, SkyNanny ofrece una forma única de explorar el mundo de manera más asequible mientras hacen lo que aman. Al apoyar a las familias durante sus viajes, obtienen experiencia valiosa y acceso a costos de viaje reducidos, haciendo que nuevos destinos sean más accesibles.\n\nEs una solución reflexiva y equilibrada. Una que convierte cada vuelo en una experiencia más tranquila y positiva para todos los involucrados.",
+    "signature": "Kristina Holland",
+    "role": "CEO y Fundadora de SkyNanny"
   },
   "about": {
     "valuesTitle": "Nuestros Valores",
