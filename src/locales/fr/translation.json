@@ -63,6 +63,22 @@
     "quality48Label": "Note moyenne",
     "quality48Desc": "Des milliers de familles satisfaites nous font confiance"
   },
+  "testimonials": {
+    "title": "Ils nous font confiance",
+    "subtitle": "Découvrez les témoignages de familles et babysitters qui ont vécu l'expérience SkyNanny",
+    "client1Name": "Sophie Martin",
+    "client1Role": "Maman de 2 enfants",
+    "client1Location": "Paris, France",
+    "client1Text": "SkyNanny a transformé notre voyage à New York ! Marie, notre babysitter, était incroyable avec les enfants. Nous avons pu profiter du vol sereinement. Je recommande à 200% !",
+    "client2Name": "Julie Dupont",
+    "client2Role": "Babysitter professionnelle",
+    "client2Location": "Lyon, France",
+    "client2Text": "Grâce à SkyNanny, j'ai pu voyager à Tokyo tout en aidant une famille adorable. Une expérience enrichissante qui m'a permis de découvrir le monde tout en faisant ce que j'aime.",
+    "client3Name": "Thomas Bernard",
+    "client3Role": "Papa solo",
+    "client3Location": "Marseille, France",
+    "client3Text": "Voyager seul avec ma fille de 3 ans était stressant. Laura m'a énormément aidé pendant le vol vers Barcelone. Service professionnel et rassurant. Merci SkyNanny !"
+  },
   "welcome": {
     "title": "Who are you?",
     "subtitle": "Choose your profile to get started",

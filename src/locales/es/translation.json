@@ -63,6 +63,22 @@
     "quality48Label": "Calificación promedio",
     "quality48Desc": "Miles de familias satisfechas confían en nosotros"
   },
+  "testimonials": {
+    "title": "Confían en Nosotros",
+    "subtitle": "Descubre testimonios de familias y niñeras que vivieron la experiencia SkyNanny",
+    "client1Name": "Sophie Martin",
+    "client1Role": "Madre de 2 niños",
+    "client1Location": "París, Francia",
+    "client1Text": "¡SkyNanny transformó nuestro viaje a Nueva York! Marie, nuestra niñera, fue increíble con los niños. Pudimos disfrutar del vuelo con tranquilidad. ¡Recomiendo al 200%!",
+    "client2Name": "Julie Dupont",
+    "client2Role": "Niñera Profesional",
+    "client2Location": "Lyon, Francia",
+    "client2Text": "Gracias a SkyNanny, pude viajar a Tokio mientras ayudaba a una familia adorable. Una experiencia enriquecedora que me permitió descubrir el mundo mientras hacía lo que amo.",
+    "client3Name": "Thomas Bernard",
+    "client3Role": "Papá Soltero",
+    "client3Location": "Marsella, Francia",
+    "client3Text": "Viajar solo con mi hija de 3 años era estresante. Laura me ayudó enormemente durante el vuelo a Barcelona. Servicio profesional y reconfortante. ¡Gracias SkyNanny!"
+  },
   "welcome": {
     "title": "¿Quién eres?",
     "subtitle": "Elige tu perfil para comenzar",
