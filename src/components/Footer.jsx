@@ -11,10 +11,12 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">SN</span>
-              </div>
-              <span className="text-xl font-bold text-white">SkyNanny</span>
+              <img 
+                src="/src/assets/logo.png" 
+                alt="SkyNanny Logo" 
+                className="h-16 w-auto"
+              />
+              <span className="text-xl font-bold text-gray-900">SkyNanny</span>
             </div>
             <p className="text-sm text-gray-400 mb-6">
               {t('footer.tagline')}

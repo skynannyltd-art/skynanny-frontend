@@ -23,12 +23,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">SN</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">SkyNanny</span>
-          </Link>
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition">
+            <img 
+             src="/src/assets/logo.png"    
+             alt="SkyNanny Logo" 
+             className="h-16 w-auto"
+          />
+           <span className="text-xl font-bold">SkyNanny</span>
+         </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
