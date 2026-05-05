@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthContext';
 
 import HomePage from './pages/HomePage';
@@ -36,6 +37,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+          <ScrollToTop />
         <div className="min-h-screen bg-gray-50">
           <Routes>
             <Route path="/" element={<HomePage />} />
