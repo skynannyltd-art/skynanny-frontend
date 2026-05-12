@@ -1,0 +1,85 @@
+export const cities = [
+  // France
+  { name: 'Paris', country: 'France', code: 'CDG' },
+  { name: 'Lyon', country: 'France', code: 'LYS' },
+  { name: 'Marseille', country: 'France', code: 'MRS' },
+  { name: 'Nice', country: 'France', code: 'NCE' },
+  { name: 'Toulouse', country: 'France', code: 'TLS' },
+  { name: 'Bordeaux', country: 'France', code: 'BOD' },
+  { name: 'Nantes', country: 'France', code: 'NTE' },
+  { name: 'Strasbourg', country: 'France', code: 'SXB' },
+  
+  // UK
+  { name: 'London', country: 'United Kingdom', code: 'LHR' },
+  { name: 'Manchester', country: 'United Kingdom', code: 'MAN' },
+  { name: 'Edinburgh', country: 'United Kingdom', code: 'EDI' },
+  { name: 'Birmingham', country: 'United Kingdom', code: 'BHX' },
+  
+  // Europe
+  { name: 'Amsterdam', country: 'Netherlands', code: 'AMS' },
+  { name: 'Barcelona', country: 'Spain', code: 'BCN' },
+  { name: 'Madrid', country: 'Spain', code: 'MAD' },
+  { name: 'Berlin', country: 'Germany', code: 'BER' },
+  { name: 'Munich', country: 'Germany', code: 'MUC' },
+  { name: 'Frankfurt', country: 'Germany', code: 'FRA' },
+  { name: 'Rome', country: 'Italy', code: 'FCO' },
+  { name: 'Milan', country: 'Italy', code: 'MXP' },
+  { name: 'Venice', country: 'Italy', code: 'VCE' },
+  { name: 'Brussels', country: 'Belgium', code: 'BRU' },
+  { name: 'Zurich', country: 'Switzerland', code: 'ZRH' },
+  { name: 'Geneva', country: 'Switzerland', code: 'GVA' },
+  { name: 'Vienna', country: 'Austria', code: 'VIE' },
+  { name: 'Prague', country: 'Czech Republic', code: 'PRG' },
+  { name: 'Lisbon', country: 'Portugal', code: 'LIS' },
+  { name: 'Dublin', country: 'Ireland', code: 'DUB' },
+  { name: 'Copenhagen', country: 'Denmark', code: 'CPH' },
+  { name: 'Stockholm', country: 'Sweden', code: 'ARN' },
+  { name: 'Oslo', country: 'Norway', code: 'OSL' },
+  { name: 'Athens', country: 'Greece', code: 'ATH' },
+  { name: 'Istanbul', country: 'Turkey', code: 'IST' },
+  
+  // Americas
+  { name: 'New York', country: 'United States', code: 'JFK' },
+  { name: 'Los Angeles', country: 'United States', code: 'LAX' },
+  { name: 'San Francisco', country: 'United States', code: 'SFO' },
+  { name: 'Miami', country: 'United States', code: 'MIA' },
+  { name: 'Chicago', country: 'United States', code: 'ORD' },
+  { name: 'Boston', country: 'United States', code: 'BOS' },
+  { name: 'Washington', country: 'United States', code: 'IAD' },
+  { name: 'Toronto', country: 'Canada', code: 'YYZ' },
+  { name: 'Montreal', country: 'Canada', code: 'YUL' },
+  { name: 'Vancouver', country: 'Canada', code: 'YVR' },
+  { name: 'Mexico City', country: 'Mexico', code: 'MEX' },
+  { name: 'Buenos Aires', country: 'Argentina', code: 'EZE' },
+  { name: 'São Paulo', country: 'Brazil', code: 'GRU' },
+  { name: 'Rio de Janeiro', country: 'Brazil', code: 'GIG' },
+  
+  // Asia
+  { name: 'Tokyo', country: 'Japan', code: 'NRT' },
+  { name: 'Dubai', country: 'UAE', code: 'DXB' },
+  { name: 'Singapore', country: 'Singapore', code: 'SIN' },
+  { name: 'Hong Kong', country: 'Hong Kong', code: 'HKG' },
+  { name: 'Bangkok', country: 'Thailand', code: 'BKK' },
+  { name: 'Seoul', country: 'South Korea', code: 'ICN' },
+  { name: 'Beijing', country: 'China', code: 'PEK' },
+  { name: 'Shanghai', country: 'China', code: 'PVG' },
+  { name: 'Mumbai', country: 'India', code: 'BOM' },
+  { name: 'Delhi', country: 'India', code: 'DEL' },
+  { name: 'Kuala Lumpur', country: 'Malaysia', code: 'KUL' },
+  { name: 'Jakarta', country: 'Indonesia', code: 'CGK' },
+  { name: 'Manila', country: 'Philippines', code: 'MNL' },
+  
+  // Africa & Middle East
+  { name: 'Cairo', country: 'Egypt', code: 'CAI' },
+  { name: 'Casablanca', country: 'Morocco', code: 'CMN' },
+  { name: 'Johannesburg', country: 'South Africa', code: 'JNB' },
+  { name: 'Nairobi', country: 'Kenya', code: 'NBO' },
+  { name: 'Tel Aviv', country: 'Israel', code: 'TLV' },
+  { name: 'Doha', country: 'Qatar', code: 'DOH' },
+  { name: 'Abu Dhabi', country: 'UAE', code: 'AUH' },
+  
+  // Oceania
+  { name: 'Sydney', country: 'Australia', code: 'SYD' },
+  { name: 'Melbourne', country: 'Australia', code: 'MEL' },
+  { name: 'Auckland', country: 'New Zealand', code: 'AKL' }
+];
